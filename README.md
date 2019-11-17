@@ -51,6 +51,7 @@ python heatmap_service.py
 ## Dashboard service
 
 ```
-
+Run service from:
+html/grid.html
 
 ```
