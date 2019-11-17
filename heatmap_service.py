@@ -3,7 +3,7 @@ from flask import Flask, request, jsonify           # import flask
 import re
 import pandas as pd
 from flask_cors import CORS 
-
+import json
 
 
 accidents_report = pd.read_csv('accidents_report.csv')
@@ -65,7 +65,9 @@ def hello():                      # call method hello
         return jsonify(returnJson)
     
     elif graph_type == 'multibar':
+        '''
         data = []
+        acc_grpd = accidents_report.groupby([col[0], col[1]]).size()
         for c in col:
             bd = accidents_report[c].value_counts()
             bd = dict(bd)
@@ -76,6 +78,22 @@ def hello():                      # call method hello
         returnJson = {'graph_type': 'multibar',
                       'data': data,
                      'title':' and '.join(col)}
+        '''
+        data = []
+        acc_grpd = accidents_report.groupby([col[0], col[1]]).size().unstack(col[1]).to_json()
+        acc_grpd = json.loads(acc_grpd)
+        for col0_field in acc_grpd:
+           bd = acc_grpd[col0_field]
+           for k,v in bd.items():
+               if v == None:
+                   bd[k] = str(0)
+               else:
+                   bd[k] = str(v)
+           data.append({'data':bd, 'title':col0_field})
+
+        returnJson = {'graph_type': 'multibar',
+                'data': data,
+                'title':' and '.join(col)}
         return jsonify(returnJson)
     
     elif graph_type == 'scatteredline':

@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body onload="load()">
+
+<div class="w3-container w3-center">
+  <h3>MoRTH Insights!</h3>
+</div>
+
+<div class="w3-row">
+        <div class="w3-col m3 w3-center"><p><space></space></p></div>
+        <div class="w3-col m6 w3-center">
+                <input class="w3-input w3-border w3-round" id="inputsearchbox" type="text" placeholder="try: show me accidents timeline" onkeydown="search(this)"></p>
+        </div>
+        <div class="w3-col m3 w3-center"><p><space></space></p></div>
+</div>
+
+
+<div class="w3-row w3-center l12 m12">
+    <div class="w3-col l12 m12">        
+        <div id="search_chart"></div>
+    </div>
+</div>
+
+<!--div class="w3-row">
+    <div class="w3-col l4 m4">
+        <canvas id="myChart"></canvas>
+    </div>
+    <div class="w3-col l4 m4">
+        <canvas id="myChart2"></canvas>
+    </div>
+    <div class="w3-col l4 m4">
+        <canvas id="myChart3"></canvas>
+    </div>
+</div-->
+
+<div class="w3-row">
+    <div class="w3-col l6 m6">
+            <div id="heatmap_chart2"></div>
+    </div>
+    <div class="w3-col l6 m6">
+        <div id="heatmap_chart"></div>
+    </div>    
+</div>
+
+<div class="w3-row">
+        <div class="w3-col l4 m4">
+                <div id="pie_chart1"></div>
+        </div>        
+        <div class="w3-col l4 m4">
+                <div id="pie_chart2"></div>
+        </div>        
+        <div class="w3-col l4 m4">
+                <div id="pie_chart3"></div>
+        </div>        
+</div>
+
+<div class="w3-row">
+        <div class="w3-col l12 m12">                
+                <div id="multibarchart"></div>
+        </div>        
+</div>
+
+<!--div class="w3-row w3-center">    
+    <div class="w3-col l12 m12 w3-center">   
+        <p>Co-relation between attributes related to accident tell us:</p>
+    </div>     
+    <div class="w3-col l12 m12 w3-center">   
+        <img src="http://34.206.109.62:8001/media/uploaded_model/correlation_graph.png" class="w3-border" alt="Norway" style="padding:16px;width:50%">
+    </div>     
+    <div class="w3-col l12 m12 w3-center">   
+        <ls>
+            <li>
+                    Accidents on bridges are more on narrow bridges and culverts.                    
+            </li>
+            <li>
+                    Bottleneck accident spots are arterial roads, asphalted road separation and roads which are crest of hill.
+            </li>
+        </ls>
+    </div>             
+</div-->
+
+</br>
+
+<div class="w3-row w3-center">   
+        <div class="w3-col l12 m12 w3-center">   
+            <h2>Accident Spots in Bengalore</h2>
+        </div>     
+        <div class="w3-col l12 m12 w3-center">  
+            <iframe src="accident_locations.html" style="border:none; width: 100%; height: 500px"></iframe>
+        </div>
+</div>
+
+<div class="w3-row w3-center">    
+        <div class="w3-col l12 m12 w3-center">   
+            <h2>Whats happening in Bengaluru?</h2>
+        </div>     
+        <div class="w3-col l12 m12 w3-center">   
+            <img src="http://34.206.109.62:8080/files/html/bangalore_heatmap.png" class="w3-border" alt="Norway" style="width:80%">
+        </div>                          
+</div>
+
+<!--div class="w3-row w3-center">    
+        <div class="w3-col l12 m12 w3-center">   
+            <h2>:Accidents time series prediction:</h2>
+        </div>     
+        <div class="w3-col l12 m12 w3-center">   
+            <img src="timeseries.png" class="w3-border" alt="Norway" style="width:80%">
+        </div>                          
+</div-->
+
+
+
+<div class="w3-row w3-center">    
+        <div class="w3-col l6 m6 w3-center">   
+            <div class="w3-row w3-center">    
+                    <div class="w3-col l12 m12 w3-center">   
+                        <h3>Co-relation between attributes related to accident tell us:</h3>
+                    </div>     
+                    <div class="w3-col l12 m12 w3-center">   
+                        <img src="http://34.206.109.62:8001/media/uploaded_model/correlation_graph.png" class="w3-border" alt="Norway" style="padding:16px;width:100%">
+                    </div>     
+                    <div class="w3-col l12 m12 w3-center">   
+                        <ls>
+                            <li>
+                                    Accidents on bridges are more on narrow bridges and culverts.                    
+                            </li>
+                            <li>
+                                    Bottleneck accident spots are arterial roads, asphalted road separation and roads which are crest of hill.
+                            </li>
+                        </ls>
+                    </div>             
+            </div>
+        </div>
+        <div class="w3-col l6 m6 w3-center">   
+                <div class="w3-row w3-center">    
+                        <div class="w3-col l12 m12 w3-center">   
+                            <h3>:Accidents time series prediction:</h3>
+                        </div>     
+                        <div class="w3-col l12 m12 w3-center">   
+                            <img src="timeseries.png" class="w3-border" alt="Norway" style="width:80%">
+                        </div>                          
+                </div>
+        </div>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.js"></script>
+
+<script>
+
+table_cols = ["hourly", "monthly", "yearly"]          
+            
+
+function search(ele) {
+    if(event.key === 'Enter') {
+        /*
+        var val = ele.value
+        for(var i=0; i<table_cols.length; i++){
+            if(val.includes(table_cols[i])){
+                plotscatteredline()
+            }
+        }
+        */
+        params = {
+            "graph_type": "scatteredline",
+            "col": ["Lane_Type_val"]
+        }
+        call_pyserver("search_chart", params, process_pyresponse)
+    }
+}
+
+    function getRandomColor() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+
+    /*
+     * typeOfChart: bar,line 
+     */
+    function plot_graph_bar(ctx, typeOfChart, title, labels, datasets){        
+        var myChart = new Chart(ctx, {
+        type: typeOfChart,
+        responsive:true,
+        maintainAspectRatio: false,
+            data: {
+                labels: labels,
+                datasets: datasets
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: title
+                }
+            }
+        });
+    }
+
+    /*
+    col_labels, row_labels: ['str', 'str']
+    data: 2d matrix
+    data: [[row_index, col_index, value]]
+     */ 
+    function plotHeatMap(html_tag_id, title, x_labels, y_labels, data){
+        var graph_data = [
+            {
+                z: data,
+                x: x_labels,
+                y: y_labels,
+                type: 'heatmap',
+                colorscale: 'Reds'
+            }
+        ];
+
+        var layout = {
+            title: title,
+            annotations: [],
+            xaxis: {
+                ticks: '',
+                side: 'top'
+            },
+            yaxis: {
+                ticks: '',
+                ticksuffix: ' ',
+                autosize: false
+            }            
+        };
+
+
+        Plotly.newPlot(html_tag_id, graph_data, layout, {showSendToCloud: false});
+    }
+
+    function plotlyPiePercentage(html_tag_id, title, labels, values){
+        var data = [{
+            values: values,
+            labels: labels,
+            type: 'pie',
+            hole: .4,
+        }];
+
+        var layout = {
+            title: title,
+        };
+
+        Plotly.newPlot(html_tag_id, data, layout);
+    }
+
+    function plotlyBarMulti(html_tag_id, title, multi_titles, multi_labels, multi_values){
+        var data = []
+        for(var i=0; i<multi_labels.length; i++){
+            data.push({
+                x: multi_labels[i],
+                y: multi_values[i],
+                name: multi_titles[i],
+                type: 'bar'
+            })
+        }
+
+        var layout = {
+            barmode: 'group',
+            title: title+" accidents count"
+        };
+
+        Plotly.newPlot(html_tag_id, data, layout);
+
+    }
+
+
+    function scatteredline(html_tag_id, title, labels, values){
+        var trace1 = {
+            type: "scatter",
+            mode: "lines",
+            name: title,
+            x: labels,
+            y: values,
+            line: {color: '#17BECF'}
+        }
+
+              
+        var data = [trace1];
+
+        var layout = {
+        title: title,
+        };
+
+        console.log("scattered: ", data)
+
+        Plotly.newPlot(html_tag_id, data, layout);
+    }
+
+
+    function load() {
+        /*
+        var ctx = document.getElementById("myChart").getContext('2d');
+        labels = ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"]
+        title = "colors title"
+        datasets = [{
+            'label': "# of colors",
+            'data': [12, 19, 3, 5, 2, 3],
+            'backgroundColor': getRandomColor()
+            //'borderWidth': 1
+        }]
+        plot_graph_bar(ctx,
+                    'bar',
+                    title,                    
+                    labels,
+                    [datasets[0], datasets[0]])
+        ctx = document.getElementById("myChart2").getContext('2d');
+        plot_graph_bar(ctx,
+                    'line',
+                    title,                    
+                    labels,
+                    datasets)        
+
+        plot_graph_bar(document.getElementById("myChart3").getContext('2d'),
+                    'pie',
+                    title,                    
+                    labels,
+                    datasets)
+        
+        plot_graph_bar(document.getElementById("search_chart").getContext('2d'),
+                    'bar',
+                    title,                    
+                    labels,
+                    datasets)
+        */
+        //plotHeatMap('heatmap_chart')                    
+        params = {
+            "row": "year",
+            "col": "Weekday",
+            "graph_type": "heatmap"
+        }
+        call_pyserver("heatmap_chart" ,params, process_pyresponse)
+
+
+        params = {
+            "row": "year",
+            "col": "Month",
+            "graph_type": "heatmap"
+        }
+        call_pyserver("heatmap_chart2" ,params, process_pyresponse)
+
+        
+        params = {
+            "col": "Severity_val",
+            "graph_type": "pie"
+        }
+        call_pyserver("pie_chart1" ,params, process_pyresponse)
+
+
+        params = {
+            "col": "Lane_Type_val",
+            "graph_type": "pie"
+        }
+        call_pyserver("pie_chart2" ,params, process_pyresponse)
+
+
+        params = {
+            "col": "Surface_Type_val",
+            "graph_type": "pie"
+        }
+        call_pyserver("pie_chart3" ,params, process_pyresponse)   
+        
+        params = {
+            "graph_type": "multibar",
+            "col": ["Lane_Type_val", "Severity_val"]
+        }
+        call_pyserver("multibarchart", params, process_pyresponse)
+
+    }
+
+    function call_pyserver(html_tag_id, params, callBack){
+        $.ajax({
+            url: "http://34.206.109.62:8000/",
+            type: "post", //send it through get method
+            dataType: 'json',
+            contentType: 'application/json',
+            data: JSON.stringify(params),
+            success: function(response) {
+                callBack(response, html_tag_id)
+            },
+            error: function(xhr) {
+                //Do Something to handle error
+            }
+        });
+    }
+
+    function process_pyresponse(response, heatmap_html_tag = "heatmap_chart"){
+        console.log(heatmap_html_tag, response, response["graph_type"])
+        
+        if(response['graph_type'] == 'heatmap'){            
+            plotHeatMap(heatmap_html_tag, 
+                        response['title'],
+                        response['cols'],
+                        response['rows'],
+                        response['values'])
+        }else if(response['graph_type'] == 'pie'){
+            labels = []
+            values = []
+            for (var key in response['data']) {
+                labels.push(key)
+                values.push(parseInt(response['data'][key]))
+            }
+            plotlyPiePercentage(heatmap_html_tag,
+                                response['title'],
+                                labels,
+                                values)
+        }else if(response['graph_type'] == 'multibar'){
+            multi_labels = []
+            mulit_values = []
+            multi_titles = []
+            for (var one_group_index in response['data']) {
+                one_group = response['data'][one_group_index]
+                console.log("one_group:", one_group)
+                labels = []
+                values = []
+                for(var key in one_group['data']){
+                    labels.push(key)
+                    values.push(parseInt(one_group['data'][key]))                    
+                }    
+                multi_titles.push(one_group['title'])         
+                multi_labels.push(labels)
+                mulit_values.push(values)
+            }
+            console.log("multi_labels:", multi_labels)
+
+            plotlyBarMulti(heatmap_html_tag,
+                            response['title'],
+                            multi_titles,
+                            multi_labels,
+                            mulit_values              
+            )
+        }else if(response['graph_type'] == 'scatteredline'){            
+            labels = []
+            /*
+            for(var i=0; i<response['labels'].length; i++){
+                labels.push(formatDate(response['labels'][i]))
+            }
+            */
+
+            for(var i=0; i<response['values'].length; i++){
+                cur_date = ("0000" + response['years'][i]).slice(-4) + "-" + ("0000" + response['months'][i]).slice(-2)
+                labels.push(cur_date)
+            }
+
+            values = []
+            for(var i=0; i<response['values'].length; i++){
+                values.push(response['values'][i])
+            }
+
+            console.log("labels:", labels)
+            console.log("values: ", values)
+            scatteredline(heatmap_html_tag,
+                                "Accident timeline",
+                                labels,
+                                values)
+        }
+    }
+
+
+    function formatDate(date) {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+
+        if (month.length < 2) 
+            month = '0' + month;
+        if (day.length < 2) 
+            day = '0' + day;
+
+        return [year, month, day].join('-');
+    }
+
+
+/*
+    test code
+    Plotly.d3.csv("https://raw.githubusercontent.com/plotly/datasets/master/finance-charts-apple.csv", function(err, rows){
+        function unpack(rows, key) {
+            return rows.map(function(row) { return row[key]; });
+        }
+        dates = unpack(rows, 'Date')
+        vals = unpack(rows, 'AAPL.Low')
+        console.log("dates: ", dates)
+        console.log("vals: ", vals)
+        heatmap_html_tag = "multibarchart"
+        scatteredline(heatmap_html_tag,
+                                    "line chart",
+                                    dates,
+                                    vals)
+    })
+*/
+
+</script>
+
+</body>
+</html>       
