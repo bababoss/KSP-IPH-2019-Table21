@@ -25,3 +25,16 @@ pip install -r requirements.txt
 
 # accidents_prediction
 ![alt text](http://34.206.109.62:8001/media/uploaded_model/accidents_prediction.png)
+
+# HOW run service
+## Analytics and prediction service
+```
+python heatmap_service.py
+
+```
+## Dashboard service
+
+```
+
+
+```
