@@ -5,6 +5,7 @@ __pycache__/
 
 # C extensions
 *.so
+<<<<<<< HEAD
 csv_file/*
 images_tfboard/*
 embedding-logs/*
@@ -18,6 +19,8 @@ image_dataset/*
 *.jpg
 *.png
 
+=======
+>>>>>>> 54d6211045fa876985e37365fc886ead8b75687b
 
 # Distribution / packaging
 .Python
