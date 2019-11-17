@@ -15,7 +15,7 @@ pip install -r requirements.txt
 
 ![alt text](http://34.206.109.62:8001/media/uploaded_model/dashboard_home.png)
 
-# Corellation analytics:
+# Correlation analytics:
 
 ![alt text](http://34.206.109.62:8001/media/uploaded_model/correlation_graph.png)
 
