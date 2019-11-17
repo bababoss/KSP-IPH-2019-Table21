@@ -11,6 +11,20 @@ Technologies: NLP, Data analytics, State of art ML and DL  like:- UlmFIT fine tu
 pip install -r requirements.txt
 
 ```
+# Insights from Data:
+```
+  1. Accidents in the month of January, May and December are comparatively more than other months.
+  2. Accidents on Friday, Saturday and Sunday are relatively more than other weekdays.
+  3. Correlation of features tells us:
+      a. Accidents on bridges are more on narrow bridges and culverts.
+      b. Bottleneck accident spots are arterial roads, asphalted road separation and roads which are crest of hill.
+  4. Feature Relevance towards Road Accident
+  
+```
+# Insights:
+
+![alt text](http://34.206.109.62:8001/media/uploaded_model/feature_relevance.jpg)
+
 # Dashboard:
 
 ![alt text](http://34.206.109.62:8001/media/uploaded_model/dashboard_home.png)
