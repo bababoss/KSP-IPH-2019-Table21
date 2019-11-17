@@ -12,5 +12,16 @@ pip install -r requirements.txt
 
 ```
 # Dashboard:
-http://34.206.109.62:8001/media/uploaded_model/location_images_tensorboard.png
+
+![alt text](http://34.206.109.62:8001/media/uploaded_model/dashboard_home.png)
+
+# Corellation analytics:
+
+![alt text](http://34.206.109.62:8001/media/uploaded_model/correlation_graph.png)
+
+#location_images_tensorboard
 ![alt text](http://34.206.109.62:8001/media/uploaded_model/location_images_tensorboard.png)
+
+
+#accidents_prediction
+![alt text](http://34.206.109.62:8001/media/uploaded_model/accidents_prediction.png)
