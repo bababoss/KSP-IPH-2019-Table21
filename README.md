@@ -26,6 +26,9 @@ pip install -r requirements.txt
 # accidents_prediction
 ![alt text](http://34.206.109.62:8001/media/uploaded_model/accidents_prediction.png)
 
+# Architecture Diagram:
+![alt text](http://34.206.109.62:8001/media/uploaded_model/MoRTH.png)
+
 # HOW run service
 ## Analytics and prediction service
 ```
