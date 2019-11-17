@@ -21,7 +21,6 @@ pip install -r requirements.txt
   4. Feature Relevance towards Road Accident
   
 ```
-# Insights:
 
 ![alt text](http://34.206.109.62:8001/media/uploaded_model/feature_relevance.jpg)
 
